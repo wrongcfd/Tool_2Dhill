@@ -1,0 +1,46 @@
+import numpy as np
+import os
+
+vel_data = np.loadtxt('GASCANS_bottom_U.xy')
+tur_data = np.loadtxt('GASCANS_bottom_k_nut_epsilon.xy')
+
+# sp=29 # start point to end
+Uref=5.66
+u_data = vel_data[:, 3] /Uref
+v_data = vel_data[:, 5]/Uref
+w_data = vel_data[:, 4]/Uref
+k_data = tur_data[:, 3]
+d = 1.0/5.0*0.04
+# 将数据分为坐标和数值列
+u_coordinates = vel_data[:, 0] /0.04 -25+10
+
+v_coordinates = vel_data[:, 2] /0.04
+
+w_coordinates = vel_data[:, 1] /0.04
+
+
+fcoordname =  'CPcoords_hillN5geo_b' + ".txt"
+
+Nx = len(u_data)
+Ny = len(v_data)
+Nz = len(w_data)
+
+fcoord = open(fcoordname, "w")
+
+for i in range(0,Nx):
+			fcoord.write(str(u_coordinates[i]) + " " + str(v_coordinates[i]) + " " + str(w_coordinates[i]) + "\n")
+
+fcoord.close()
+
+# Read the original file content
+input_filename = fcoordname
+with open(input_filename, 'r') as file:
+    content = file.readlines()
+
+# Write the content to a new file with Unix line endings
+unix_filename = 'CPcoords_hillN5geo_b_unix.txt'
+with open(unix_filename, 'w', newline='\n') as file:
+    file.writelines(content)
+
+# Remove the original file
+os.remove(input_filename)
