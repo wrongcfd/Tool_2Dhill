@@ -16,9 +16,9 @@ def generate_3d_sine_hill(amplitude_xy, length_xy, height_xy, height_3d, resolut
     # ny = int(resolution * height_xy)
     # nz = int(resolution * height_3d)
 
-    with open(f"hill_2d.pc", "w") as ocout:
+    with open(f"hill_2d20.pc", "w") as ocout:
         for x in np.arange(0, length_xy+resolution, resolution):
-            for y in np.arange(0.1, height_xy+resolution, resolution):
+            for y in np.arange(resolution/2, height_xy+resolution, resolution):
                 for z in np.arange(0, height_3d+resolution, resolution):  # Extend to 3D by varying z
                     # Calculate the 3D sine hill function
                     sine_hill_xy = amplitude_xy * np.cos( np.pi *((x-2.5)/ length_xy))**2
@@ -35,11 +35,11 @@ amplitude_value_xy = 1.0  # Change this to the desired amplitude of the sine hil
 length_value_xy = 5.0  # Change this to the desired length of the sine hill in XY plane
 height_value_xy = 1.0  # Change this to the desired height of the sine hill in XY plane
 height_value_3d = 6.0  # Z length
-res =1.0/5.0 # N+1
+res =1.0/20.0 # N+1
 
 generate_3d_sine_hill(amplitude_value_xy,length_value_xy, height_value_xy, height_value_3d, res)
 
-convert_dos_to_unix("hill_2d.pc", "hill_2dN5new2_unix.pc")
+convert_dos_to_unix("hill_2d20.pc", "hill_2dN20new2_unix.pc")
 
 # # Delete the "hill_2d.pc" file
 # file_to_delete = "hill_2d.pc"
@@ -50,7 +50,7 @@ convert_dos_to_unix("hill_2d.pc", "hill_2dN5new2_unix.pc")
 # except OSError as e:
 #     print(f"Deletion failed: {e}")
 # # Load data from the file
-file_path = "hill_2d.pc"  # Change this to the correct filcat e path
+file_path = "hill_2d20.pc"  # Change this to the correct filcat e path
 data = np.loadtxt(file_path)
 
 # Extract coordinates
