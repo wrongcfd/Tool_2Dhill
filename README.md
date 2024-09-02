@@ -4,6 +4,7 @@ This is branch for SEM inlet BC files when using pure LBM
 2. `slice.py` Slice plane along X direction
 3. `RXX.py` Slice middle line for inlet and middle lines
 4. `output_yplus.py` Need further change
+5. `xslicehill.py` and `zaveh5.py` Slice plane with Z direction averaged.
 ## Tools for SEM inlet
 1. `SEMLBboundaries.py` coords
 2. `SEM_R_LOGINLET.py`  vel, etc.
