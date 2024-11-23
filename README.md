@@ -13,7 +13,13 @@ This is branch for SEM inlet BC files when using pure LBM
 ## Tools for velocity inlet
 `VEL_LOGINLETv2g.py` vel inlet
 
-## Tools for post-processing
+## Tools for post-processing dev version
+
+`hill_mian.py` plot Ux and Ruu at the same time
+
+`hill_plotfunction.py` store functions
+
+## Tools for post-processing in old folder
 `CAO_hill_Ux_location.py` Ux validation, read hill location
 
 `CAO_hill_Rxx_location.py` Rii
